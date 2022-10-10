@@ -25,7 +25,8 @@ def Cards(username):
         pprint(f'CVV is {cvv}')
         i+=1
     backToProfile(username)
-    
+
+#ChangeMpin function will allow user to change the PIN for his/her cards.    
 def ChangeMpin(username):
     cardNumber=int(input("Enter Card Number for PIN change: "))
     mpin=int(input("Enter the old MPin: "))
@@ -43,6 +44,7 @@ def ChangeMpin(username):
         pprint("MPIN Successfully changed!!")
     backToProfile(username)
 
+#NewCard function will allow user to register a new card.
 def NewCard(username):
     connection=connect()
     cursor=connection.cursor(buffered=True)
