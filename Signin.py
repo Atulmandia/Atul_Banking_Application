@@ -1,5 +1,4 @@
 from pprint import  pprint
-# from Options import ProfileOptions
 from MySQL_Connect import connect
 
 #signin function will take input as username & password and validates them after the entries are made.

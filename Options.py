@@ -36,6 +36,7 @@ def HomeOptions():
     selectedOption=int(input("\nEnter option number: "))
     SwitcherFunction(selectedOption,signin,register)
 
+#ProfilelOptions function will display all the options after successful login of the user.
 def ProfileOptions(username):
     pprint("1. Account information")
     pprint("2. List of Beneficiaries")
@@ -49,11 +50,13 @@ def ProfileOptions(username):
     optionSelected= int(input("\n Enter Your Option: "))
     ProfileSwitcher(optionSelected,username,viewAccountBalance,viewBeneficiary,Cards,AddBeneficiary,UpdateInfo,Transaction,ChangeMpin,NewCard)
 
+#WrongProfileOption function will check if the entered option is right or wrong.
 def WrongProfileOption(username,op1,op2,op3,op4,op5,op6,op7,op8):
     pprint(f'option is wrong\n')
     optionSelected=int(input("\n Enter option number: "))
     ProfileSwitcher(optionSelected,username,op1,op2,op3,op4,op5,op6,op7,op8)
 
+#Profileswitcher function will switch between different functions based on the option selected.
 def ProfileSwitcher(argument,username,op1,op2,op3,op4,op5,op6,op7,op8):
     if argument==1:
         op1(username)

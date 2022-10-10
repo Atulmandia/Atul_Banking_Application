@@ -1,4 +1,3 @@
-from pprint import  pprint
 from MySQL_Connect import connect
 from backToProfile import backToProfile
 
@@ -65,7 +64,8 @@ def Transaction(username):
             cursor10=connection.cursor(buffered=True)
             cursor10.execute("insert into Transactions (TransactionID, Amount_value, From_Account, To_Account, Balance_left, Card_number, Date, IFSC, Recipient_name) values(%s,%s,%s,%s,%s,%s,curdate(),%s,%s)",(noTransaction+1,-1*amount,fromAccount,toAccount,fromAccountBalance-amount,CardNumber,ifsc,name,))
     backToProfile(username)
-    
+
+#CardType function will take evaluate and switch transaction through credit & debit card and at the same time checks the entered card number whether it is wrong or right.
 def CardType(selectedOption):
     if selectedOption==1:
          return "Credit_card"
