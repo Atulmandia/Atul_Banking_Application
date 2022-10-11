@@ -14,7 +14,7 @@ def register():
     password = input('\nEnter password: ')
     query = "insert into User values (%s, %s, %s, %s, %s, %s)"
     mycon= cur()
-    user_query = (username,name,aadhar,mobile,password,)
+    user_query = (username,name,aadhar,mobile,password,address)
     mycon.execute(query,user_query)
 
 # mobileCheck function takes the mobile number & checks the input if it is 10 digit or not
