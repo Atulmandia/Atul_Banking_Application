@@ -56,7 +56,6 @@ def NewCard(username):
     cvv1=random.randint(100,999)
     cursor.execute("insert into Cards values(%s,%s,%s,%s,%s)",(cardNumber,CardTyped,pin1,cvv1,username,))
     pprint("New card added to your account.")
-    result=cursor.fetchone
-    pprint(f'Your Card Number is: {result[0]}')
+    pprint(f'Your Card Number is: {cardNumber}')
     pprint("Check your PIN in List of Cards.")
     backToProfile(username)

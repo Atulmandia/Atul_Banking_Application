@@ -33,7 +33,7 @@ def HomeOptions():
     pprint("1. Login")
     pprint("2. Register Yourself")
     pprint("3. Exit")
-    selectedOption=int(input("\nEnter option number: "))
+    selectedOption=optionCheck()
     SwitcherFunction(selectedOption,signin,register)
 
 #ProfilelOptions function will display all the options after successful login of the user.
@@ -47,13 +47,13 @@ def ProfileOptions(username):
     pprint("7. Change MPIN")
     pprint("8. Register a New Credit or Debit Card")
     pprint("9. Exit")
-    optionSelected= int(input("\n Enter Your Option: "))
+    optionSelected= optionCheck()
     ProfileSwitcher(optionSelected,username,viewAccountBalance,viewBeneficiary,Cards,AddBeneficiary,UpdateInfo,Transaction,ChangeMpin,NewCard)
 
 #WrongProfileOption function will check if the entered option is right or wrong.
 def WrongProfileOption(username,op1,op2,op3,op4,op5,op6,op7,op8):
     pprint(f'option is wrong\n')
-    optionSelected=int(input("\n Enter option number: "))
+    optionSelected=optionCheck()
     ProfileSwitcher(optionSelected,username,op1,op2,op3,op4,op5,op6,op7,op8)
 
 #Profileswitcher function will switch between different functions based on the option selected.
@@ -78,4 +78,10 @@ def ProfileSwitcher(argument,username,op1,op2,op3,op4,op5,op6,op7,op8):
         quit()
     else: WrongProfileOption(username,op1,op2,op3,op4,op5,op6,op7,op8)
 
- 
+def optionCheck():
+    try : 
+        enteredoption=int(input("\n Enter option number: "))
+    except ValueError as ve:
+        print(f'\nEntered value is not a number. Enter correct option.')
+        enteredoption=optionCheck()
+    return enteredoption
