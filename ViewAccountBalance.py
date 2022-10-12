@@ -6,7 +6,16 @@ from backToProfile import backToProfile
 def viewAccountBalance(username):
     connection=connect()
     cursor=connection.cursor(buffered=True)
-    cursor.execute("select Account_balance from Account where Username=%s",(username,))
-    balance=cursor.fetchone()
-    pprint(f'Your Account Balance is {balance[0]}')
+    cursor.execute("select * from Account where Username=%s",(username,))
+    result1=cursor.fetchall()
+    accNumbers=[row[0] for row in result1]
+    userName=[row[1] for row in result1]
+    balance=[row[2] for row in result1]
+    i=1
+    for(Account_number, Username, Account_balance) in zip(accNumbers,userName,balance):
+        print(i)
+        print(f'Your Account number is {Account_number}')
+        print(f'Card Type is {Username}')
+        print(f'MPIN is {Account_balance}\n')
+        i+=1
     backToProfile(username)

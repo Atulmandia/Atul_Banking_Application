@@ -4,7 +4,7 @@ from MySQL_Connect import connect
 #signin function will take input as username & password and validates them after the entries are made.
 def signin():
     print(f'--------WELCOME TO LOGIN PAGE--------\n')
-    print(f'\nEnter the following details: ')
+    print(f'Enter the following details: \n')
     username=input("Enter your Username : ")
     #Below code from line: 11 to 21 will check the username entered if it is correct or not. 
     #If it is incorrect then it'll ask user to enter the correct one.
@@ -35,7 +35,7 @@ def signin():
             quit()
         passwordInput=input(f'\nPassword Incorrect, {j} attempts left \nEnter correct password again : ')
     if passwordForCheck==passwordInput:
-        pprint(f"{username} Successfully Signed In \n")
+        print(f'\n{username} Successfully Signed In! \n')
         print(f'\nSelect One option from below: ')
         import Options
         Options.ProfileOptions(username)
