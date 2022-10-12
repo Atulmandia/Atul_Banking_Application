@@ -1,12 +1,14 @@
-from pprint import  pprint
 from MySQL_Connect import connect
 
-#signin function will take input as username & password and validates them after the entries are made.
 def signin():
+    """
+        This function will take input as username & password and validates them after the entries are made.
+    """
     print(f'--------WELCOME TO LOGIN PAGE--------\n')
     print(f'Enter the following details: \n')
     username=input("Enter your Username : ")
-    #Below code from line: 11 to 21 will check the username entered if it is correct or not. 
+
+    #Below code will check the username entered if it is correct or not. 
     #If it is incorrect then it'll ask user to enter the correct one.
     #Also, there will be only 4 attempts to make it right.
     connection=connect()
@@ -21,7 +23,7 @@ def signin():
             break
         username=input(f'\nUsername not found, {i} attempts left \nEnter correct Username : ')
 
-    #Below code from line: 26 to 36 will check the entered password if it is correct or not. 
+    #Below code will check the entered password if it is correct or not. 
     #If it is incorrect then it'll ask user to enter the correct one.
     #Also, there will be only 4 attempts to make it right.    
     cursor1=connection.cursor(buffered=True)

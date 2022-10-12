@@ -2,8 +2,11 @@ from pprint import  pprint
 from MySQL_Connect import connect
 from backToProfile import backToProfile
 
-#viewAccountBalance function helps us to provide an option to display the account balance of the user.
 def viewAccountBalance(username):
+    """
+        This function helps us to provide an option to display the account balance of the user.
+        :param username: the username entered.
+    """
     connection=connect()
     cursor=connection.cursor(buffered=True)
     cursor.execute("select * from Account where Username=%s",(username,))

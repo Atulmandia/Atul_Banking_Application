@@ -1,10 +1,13 @@
 from backToProfile import backToProfile
 from MySQL_Connect import connect
 
-#UpdateInfo function provides an option to update user information like name, mobile number & address.
-#This gives option to update all three at the same time.
-#If they want to update only one or two of the informatio, they can leave the rest of the information as it is.
 def UpdateInfo(username):
+    """
+        This function provides an option to update user information like name, mobile number & address.
+        This gives option to update all three at the same time.
+        If they want to update only one or two of the information, they can leave the rest of the information as it is.
+        :param username: the username entered.
+    """
     connection=connect()
     cursor=connection.cursor(buffered=True)
     cursor.execute("select Name, Mobile_number, Address from User where Username=%s",(username,))

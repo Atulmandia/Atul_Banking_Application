@@ -1,4 +1,3 @@
-from pprint import  pprint
 from Benificiary import AddBeneficiary, viewBeneficiary
 from Cards import Cards, ChangeMpin, NewCard
 from Registeration import register
@@ -7,19 +6,30 @@ from Transaction import Transaction
 from UpdateInfo import UpdateInfo
 from ViewAccountBalance import viewAccountBalance
 
-# select function makes the user able to select the desired option they need to work on.
 def select():
-    pprint("Select one option: ")
+    """
+        This function makes the user able to select the desired option they need to work on.
+    """
+    print("Select one option: ")
 
-#WrongSelectedOptions function will validate if the entry made by user is lying in the options or not
 def wrongSelectedOptions(op1,op2):
-    pprint("option is wrong")
+    """
+        This function will validate if the entry made by user is lying in the options or not.
+        :param op1: Option 1 which is login().
+        :param op2: Option 2 which is register().
+    """
+    print(f'\noption is wrong')
     selectedOption=int(input("\n Enter option number: "))
     SwitcherFunction(selectedOption,op1,op2)
     
-#SwitcherFunction will switch between functions
+
 def SwitcherFunction(argument,op1,op2):
-    # pprint(argument==1)
+    """
+        This function will switch between functions.
+        :param argument: It is the option entered by the user.
+        :param op1: Option 1 which is login().
+        :param op2: Option 2 which is register().
+    """
     if argument==1:
         op1()
     elif argument==2:
@@ -28,36 +38,64 @@ def SwitcherFunction(argument,op1,op2):
         quit()
     else: wrongSelectedOptions(op1,op2)
     
-#HomeOptions function will display & take input from user regarding the options provided.
 def HomeOptions():
-    pprint("1. Login")
-    pprint("2. Register Yourself")
-    pprint("3. Exit")
+    """
+        This function will display & take input from user regarding the options provided.
+    """
+    print("1. Login")
+    print("2. Register Yourself")
+    print("3. Exit")
     selectedOption=optionCheck()
     SwitcherFunction(selectedOption,signin,register)
 
-#ProfilelOptions function will display all the options after successful login of the user.
 def ProfileOptions(username):
-    pprint("1. Account information")
-    pprint("2. List of Beneficiaries")
-    pprint("3. List of Cards")
-    pprint("4. Add Beneficiary")
-    pprint("5. Update Account information")
-    pprint("6. Transfer Funds")
-    pprint("7. Change MPIN")
-    pprint("8. Register a New Credit or Debit Card")
-    pprint("9. Exit")
+    """
+        This function will display all the options after successful login of the user.
+        :param username: the username entered.
+    """
+    print("1. Account information")
+    print("2. List of Beneficiaries")
+    print("3. List of Cards")
+    print("4. Add Beneficiary")
+    print("5. Update Account information")
+    print("6. Transfer Funds")
+    print("7. Change MPIN")
+    print("8. Register a New Credit or Debit Card")
+    print("9. Exit")
     optionSelected= optionCheck()
     ProfileSwitcher(optionSelected,username,viewAccountBalance,viewBeneficiary,Cards,AddBeneficiary,UpdateInfo,Transaction,ChangeMpin,NewCard)
 
-#WrongProfileOption function will check if the entered option is right or wrong.
 def WrongProfileOption(username,op1,op2,op3,op4,op5,op6,op7,op8):
-    pprint(f'option is wrong\n')
+    """
+        This function will check if the entered option is right or wrong.
+        :param username: the username entered.
+        :param op1: Option 1 which is viewAccountBalance().
+        :param op2: Option 2 which is viewBeneficiary().
+        :param op3: Option 3 which is Cards().
+        :param op4: Option 4 which is AddBeneficiary().
+        :param op5: Option 5 which is UpdateInfo().
+        :param op6: Option 6 which is Transaction().
+        :param op7: Option 7 which is ChangeMpin().
+        :param op8: Option 8 which is NewCard().
+    """
+    print(f'option is wrong\n')
     optionSelected=optionCheck()
     ProfileSwitcher(optionSelected,username,op1,op2,op3,op4,op5,op6,op7,op8)
 
-#Profileswitcher function will switch between different functions based on the option selected.
 def ProfileSwitcher(argument,username,op1,op2,op3,op4,op5,op6,op7,op8):
+    """
+        This function will switch between different functions based on the option selected.
+        :param argument: It is the option entered by the user.
+        :param username: the username entered.
+        :param op1: Option 1 which is viewAccountBalance().
+        :param op2: Option 2 which is viewBeneficiary().
+        :param op3: Option 3 which is Cards().
+        :param op4: Option 4 which is AddBeneficiary().
+        :param op5: Option 5 which is UpdateInfo().
+        :param op6: Option 6 which is Transaction().
+        :param op7: Option 7 which is ChangeMpin().
+        :param op8: Option 8 which is NewCard().
+    """
     if argument==1:
         op1(username)
     elif argument==2:
@@ -79,6 +117,9 @@ def ProfileSwitcher(argument,username,op1,op2,op3,op4,op5,op6,op7,op8):
     else: WrongProfileOption(username,op1,op2,op3,op4,op5,op6,op7,op8)
 
 def optionCheck():
+    """
+        This function will validate the entered option number. 
+    """
     try : 
         enteredoption=int(input("\n Enter option number: "))
     except ValueError as ve:
