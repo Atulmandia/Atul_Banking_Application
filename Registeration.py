@@ -5,7 +5,7 @@ from MySQL_Connect import select, connect
 from Signin import signin
 from execution import cur
 
-# register function starts asking perrsonal info of the user
+# register function starts asking personal info of the user.
 def register():
     connection=connect()
     username= usernameCheck()
@@ -38,6 +38,7 @@ def register():
     print(f'\nRegistered Successfully! \n \n Login to Continue.')
     signin()
 
+#check function will check if the cardnumber recently alloted does not lie in the already alloted cards.
 def check(connection):
     cursor=connection.cursor(buffered=True)
     cardnumber=random.randint(1000000000000000,9999999999999999)
@@ -47,6 +48,7 @@ def check(connection):
         cardnumber=random.randint(1000000000000000,9999999999999999)
     return cardnumber
 
+#the nameCheck function will not allow directly entering enter on the entering name page.
 def nameCheck():
     name = input('\nEnter Your name: ')
     if len(name)==0:
@@ -54,6 +56,7 @@ def nameCheck():
         name=nameCheck()
     return name
 
+#addressCheck function will not allow directly entering enter on the entering name page.
 def addressCheck():
     address = input('\nEnter Your address: ')
     if len(address)==0:
@@ -101,11 +104,13 @@ def usernameCheck():
         username_info=usernameCheck()
     return username_info
 
+#valid_username validates the entered username, if the user doesn't follow the written requirements of the username input, this will ask to re-enter it.
 def valid_username(username):
     if not username.isalnum():
         return True
     return False
 
+#checkPassword function validates the entered password, if the user doesn't follow the written requirements of the password input, this will ask to re-enter it.
 def checkPassword():
     print(f'Password must contain atleast 1 uppercase, 1 lowercase & 1 special character\n')
     password = input('\nEnter password: ')
